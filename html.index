@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobilecoin Mini APP</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #f39c12;
+            --text: #ecf0f1;
+            --background: #1a1a1a;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--background);
+            margin: 0;
+            padding: 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .about {
+            background-color: var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .app-info {
+            background-color: var(--secondary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .icons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .icon {
+            background-color: var(--primary);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .icon:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+        
+        .icon i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--accent);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 600px) {
+            .icons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- EDITAR AQUI: Título principal do site -->
+        <h1>MOB COIN MINI APP</h1>
+        <p></p>
+    </header>
+    
+    <div class="profile">
+        <!-- EDITAR AQUI: Substituir pela URL da imagem do robô ou desenvolvedor -->
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Robô ou Foto do Dev" class="profile-img" id="devPhoto">
+        <!-- EDITAR AQUI: Nome do desenvolvedor/empresa -->
+        <h2 id="Mine should Be Easy">Daniel R. Fraga</h2>
+    </div>
+    
+    <div class="about">
+        <!-- EDITAR AQUI: Texto sobre o desenvolvedor/empresa -->
+        <h2>Tecnologia e crypto currency's since 2025.</h2>
+        <p id="devDescription">Main mind set: Criar uma pool de mineração de uma coin acessível e rentável, focada em baixo poder de computação, para que juntos em volume e coletividade consigamos ganhos constantes e diários utilizando de um aplicativo simples e intuitivo para que seja para todos, em todos os lugares.</p>
+    </div>
+    
+    <div class="app-info">
+        <!-- EDITAR AQUI: Título e descrição do projeto -->
+        <h2>Sobre o Mini App</h2>
+        <p id="appDescription">Pool de Mineração Colaborativa, Acreditamos que todos podem lucrar, mesmo com hardware simples.</p>
+    </div>
+    
+    <div class="icons">
+        <!-- EDITAR AQUI: Links dos ícones (substituir URLs) -->
+        <div class="icon" onclick="openLink('https://t.me/Mechanicmasterbot')">
+            <i class="fab fa-telegram"></i>
+            <span>Bot Telegram</span>
+        </div>
+        <div class="icon" onclick="openLink('https://wa.me/qr/4MMGBJD3CXSHC1')">
+            <i class="fas fa-robot"></i> <!-- Ícone alterado para robô -->
+            <span>Contact a Human</span>
+        </div>
+        <div class="icon" onclick="openLink('https://bisscoito.github.io/mobilecoin-miner/')">
+            <i class="fas fa-cog"></i> <!-- Ícone alterado para engrenagem -->
+            <span>Mini App</span>
+        </div>
+        <div class="icon" onclick="openLink('https://github.com/Bisscoito/mobilecoin-miner')">
+            <i class="fab fa-github"></i>
+            <span>Project GitHub</span>
+        </div>
+    </div>
+    
+    <footer>
+        <!-- EDITAR AQUI: Rodapé com informações de copyright -->
+        <p>&copy; 2023 MOBcPage. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script>
+        // Você pode personalizar esses dados via JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // EDITAR AQUI: Dados do desenvolvedor (substitua pelos valores desejados)
+            document.getElementById('devName').textContent = 'Daniel R Fraga';
+            document.getElementById('devDescription').textContent = 'Desenvolvedor entusiasta do mundo tecnológico querendo trazer acessibilidade e inclusão.';
+            document.getElementById('appDescription').textContent = 'O Mini App para MobileCoin é simples e intuitivo, visando facilitar o uso ate para hardwares fracos como um dispositivo mobile.';
+            
+            // EDITAR AQUI: Caminho para a foto do desenvolvedor ou ícone do robô
+            document.getElementById('devPhoto').src = 'https://cdn-icons-png.flaticon.com/512/4712/4712035.png';
+        });
+        
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
