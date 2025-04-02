@@ -1,42 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tele_DeFi Dashboard</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <header class="dashboard-header">
-    <h1>Painel Tele_DeFi</h1>
-    <p>Monitoramento em tempo real da pool de liquidez</p>
-  </header>
+   <html lang="pt-BR">
+   <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>EPI Token Dashboard</title>
+       <!-- Usa o MESMO CSS da página principal -->
+       <link rel="stylesheet" href="css/style.css">
+       <!-- CSS específico do dashboard -->
+       <style>
+           .dashboard-header {
+               background: #2c3e50;
+               padding: 2rem;
+               text-align: center;
+           }
+           .stat-card {
+               background: #34495e;
+               border-left: 4px solid #f39c12;
+           }
+       </style>
+   </head>
+   <body>
+       <header class="dashboard-header">
+           <h1>EPI Token Dashboard</h1>
+           <a href="index.html" style="color: #f39c12;">← Voltar à página principal</a>
+       </header>
 
-  <main class="dashboard-container">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <h3>Preço EPI</h3>
-        <p id="epi-price">--</p>
-      </div>
-      
-      <div class="stat-card">
-        <h3>Liquidez Total</h3>
-        <p id="total-liquidity">--</p>
-      </div>
-      
-      <div class="stat-card">
-        <h3>Holders</h3>
-        <p id="holders-count">--</p>
-      </div>
-    </div>
-    
-    <div class="chart-container">
-      <canvas id="priceChart"></canvas>
-    </div>
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="js/dashboard.js"></script>
-</body>
-</html>
+       <!-- Conteúdo do dashboard aqui -->
+       <script src="js/dashboard.js"></script>
+   </body>
+   </html>
