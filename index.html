@@ -102,42 +102,6 @@
             border-top: 1px solid var(--accent);
             font-size: 0.9rem;
         }
-
-        /* Estilo para o modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-
-        .modal-content {
-            background-color: var(--primary);
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid var(--accent);
-            width: 80%;
-            max-width: 500px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: var(--accent);
-        }
         
         @media (max-width: 600px) {
             .icons {
@@ -149,26 +113,21 @@
 </head>
 <body>
     <header>
-        <!-- EDITAR AQUI: Título principal do site -->
         <h1>Tele_DeFi</h1>
         <p></p>
     </header>
     
     <div class="profile">
-        <!-- EDITAR AQUI: Substituir pela URL da imagem do robô ou desenvolvedor -->
         <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="Robô ou Foto do Dev" class="profile-img" id="devPhoto">
-        <!-- EDITAR AQUI: Nome do desenvolvedor/empresa -->
         <h2 id="Mine should Be Easy">@Mechanicmasterbot</h2>
     </div>
     
     <div class="about">
-        <!-- EDITAR AQUI: Texto sobre o desenvolvedor/empresa -->
         <h2>Tecnologia e Mercado DeFi desde 2025.</h2>
         <p id="devDescription">Mentalidade principal: Queremos democratizar o acesso ao mercado DeFi, tornando-o fácil, seguro e rentável, para qualquer pessoa – mesmo sem experiência.</p>
     </div>
     
     <div class="app-info">
-        <!-- EDITAR AQUI: Título e descrição do projeto -->
         <h2>Sobre o Tele_DeFi</h2>
         <p id="appDescription">
             🌱 Acessibilidade total – Comece com valores pequenos e interface intuitiva.<br><br>
@@ -182,18 +141,17 @@
     </div>
     
     <div class="icons">
-        <!-- EDITAR AQUI: Links dos ícones (substituir URLs) -->
         <div class="icon" onclick="openLink('https://t.me/Mechanicmasterbot')">
             <i class="fab fa-telegram"></i>
             <span>Bot Telegram</span>
         </div>
         <div class="icon" onclick="openLink('https://wa.me/qr/4MMGBJD3CXSHC1')">
-            <i class="fa-brands fa-whatsapp"></i> <!-- Ícone alterado para whatsapp-->
+            <i class="fa-brands fa-whatsapp"></i>
             <span>Contact a Human</span>
         </div>
-        <div class="icon" onclick="showComingSoon()">
-            <i class="fas fa-cog"></i> <!-- Ícone alterado para engrenagem -->
-            <span>Dashboard</span>
+        <div class="icon" onclick="window.open('dashboard.html', '_blank')">
+            <i class="fas fa-chart-line"></i>
+            <span>Live Dashboard</span>
         </div>
         <div class="icon" onclick="openLink('https://github.com/Bisscoito/epi-token-bot')">
             <i class="fab fa-github"></i>
@@ -201,52 +159,20 @@
         </div>
     </div>
     
-    <!-- Modal para a mensagem "Em breve" -->
-    <div id="comingSoonModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Em breve!</h2>
-            <p>Estamos nos preparativos.</p>
-        </div>
-    </div>
-    
     <footer>
-        <!-- EDITAR AQUI: Rodapé com informações de copyright -->
         <p>&copy; Lei nº 14.740/2023 (Reforma Tributária)</p>
     </footer>
     
     <script>
-        // Você pode personalizar esses dados via JavaScript
         document.addEventListener('DOMContentLoaded', function() {
-            // EDITAR AQUI: Dados do desenvolvedor (substitua pelos valores desejados)
             document.getElementById('devName').textContent = 'Daniel R Fraga';
             document.getElementById('devDescription').textContent = 'Desenvolvedor entusiasta do mundo tecnológico querendo trazer acessibilidade e inclusão.';
-            document.getElementById('appDescription').textContent = 'O Mini App para MobileCoin é simples e intuitivo, visando facilitar o uso ate para hardwares fracos como um dispositivo mobile.';
-            
-            // EDITAR AQUI: Caminho para a foto do desenvolvedor ou ícone do robô
+            document.getElementById('appDescription').textContent = 'O Mini App para MobileCoin é simples e intuitivo, visando facilitar o uso até para hardwares fracos como um dispositivo mobile.';
             document.getElementById('devPhoto').src = 'https://cdn-icons-png.flaticon.com/512/4712/4712035.png';
         });
         
         function openLink(url) {
             window.open(url, '_blank');
-        }
-        
-        // Função para mostrar a mensagem "Em breve"
-        function showComingSoon() {
-            document.getElementById('comingSoonModal').style.display = 'block';
-        }
-        
-        // Função para fechar o modal
-        function closeModal() {
-            document.getElementById('comingSoonModal').style.display = 'none';
-        }
-        
-        // Fechar o modal se clicar fora dele
-        window.onclick = function(event) {
-            const modal = document.getElementById('comingSoonModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
         }
     </script>
 </body>
