@@ -1,31 +1,53 @@
 <!DOCTYPE html>
-   <html lang="pt-BR">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>EPI Token Dashboard</title>
-       <!-- Usa o MESMO CSS da página principal -->
-       <link rel="stylesheet" href="css/style.css">
-       <!-- CSS específico do dashboard -->
-       <style>
-           .dashboard-header {
-               background: #2c3e50;
-               padding: 2rem;
-               text-align: center;
-           }
-           .stat-card {
-               background: #34495e;
-               border-left: 4px solid #f39c12;
-           }
-       </style>
-   </head>
-   <body>
-       <header class="dashboard-header">
-           <h1>EPI Token Dashboard</h1>
-           <a href="index.html" style="color: #f39c12;">← Voltar à página principal</a>
-       </header>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPI Token Dashboard</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* Estilos específicos do dashboard */
+        .dashboard-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #ecf0f1;
+        }
+        .stat-card {
+            background: #34495e;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .back-link {
+            color: #f39c12;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <a href="index.html" class="back-link">← Voltar à página principal</a>
+        <h1>EPI Token Dashboard</h1>
+        
+        <div class="stat-card">
+            <h3>Status do Contrato</h3>
+            <p id="contract-status">🟡 Aguardando conexão com o contrato</p>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Preço EPI/BNB</h3>
+            <p id="epi-price">--</p>
+        </div>
+        
+        <div class="stat-card">
+            <h3>Liquidez Total</h3>
+            <p id="total-liquidity">--</p>
+        </div>
+    </div>
 
-       <!-- Conteúdo do dashboard aqui -->
-       <script src="js/dashboard.js"></script>
-   </body>
-   </html>
+    <script src="./js/dashboard.js"></script>
+</body>
+</html>
