@@ -26,16 +26,13 @@ async function initWeb3() {
             await window.ethereum.request({ method: 'eth_requestAccounts' });
             window.web3 = new Web3(window.ethereum);
             
-            // Atualizar status de conexão
             updateConnectionStatus(true);
             
-            // Ouvinte para mudança de conta
-            window.ethereum.on('accountsChanged', (accounts) => {
+            window.ethereum.on('accountsChanged', () => {
                 window.location.reload();
             });
             
-            // Ouvinte para mudança de rede
-            window.ethereum.on('chainChanged', (chainId) => {
+            window.ethereum.on('chainChanged', () => {
                 window.location.reload();
             });
             
@@ -54,7 +51,6 @@ function fallbackToBSC() {
     updateConnectionStatus(false, "Usando nó público da BSC");
 }
 
-// Atualizar status de conexão
 function updateConnectionStatus(connected, message = "") {
     isConnected = connected;
     const statusElement = document.getElementById('connection-status');
@@ -68,20 +64,17 @@ function updateConnectionStatus(connected, message = "") {
     }
 }
 
-// Inicializar contrato
 async function initContract() {
-    // ATUALIZE COM SEU CONTRACT ABI E ENDEREÇO
-    const contractAddress = '0xSEU_ENDERECO_DO_CONTRATO';
-    const contractABI = []; // Cole o ABI completo aqui
+    const contractAddress = '0xSEU_ENDERECO_DO_CONTRATO'; // Substitua
+    const contractABI = []; // Cole o ABI aqui
     
     if (!contractAddress || contractABI.length === 0) {
-        throw new Error("Endereço do contrato ou ABI não configurados");
+        throw new Error("Configure o contrato primeiro");
     }
     
     epiContract = new web3.eth.Contract(contractABI, contractAddress);
 }
 
-// Atualizar dados do dashboard
 async function updateData() {
     if (!epiContract) {
         console.error("Contrato não inicializado");
@@ -89,17 +82,17 @@ async function updateData() {
     }
 
     try {
-        const results = await Promise.all([
+        const [price, liquidity, holders] = await Promise.all([
             epiContract.methods.getPrice().call(),
             epiContract.methods.totalLiquidity().call(),
             epiContract.methods.getHoldersCount().call()
         ]);
         
-        document.getElementById('epi-price').textContent = `${formatNumber(web3.utils.fromWei(results[0]))} BNB`;
-        document.getElementById('total-liquidity').textContent = `${formatNumber(web3.utils.fromWei(results[1]))} BNB`;
-        document.getElementById('holders-count').textContent = formatNumber(results[2]);
+        document.getElementById('epi-price').textContent = `${formatNumber(web3.utils.fromWei(price))} BNB`;
+        document.getElementById('total-liquidity').textContent = `${formatNumber(web3.utils.fromWei(liquidity))} BNB`;
+        document.getElementById('holders-count').textContent = formatNumber(holders);
         
-        updateChart(results[0]);
+        updateChart(price);
         
     } catch (error) {
         console.error("Erro ao atualizar dados:", error);
@@ -107,7 +100,6 @@ async function updateData() {
     }
 }
 
-// Formatador de números
 function formatNumber(value) {
     const num = Number(value);
     if (isNaN(num)) return value;
@@ -118,7 +110,6 @@ function formatNumber(value) {
     });
 }
 
-// Configurar gráfico
 function initChart() {
     const ctx = document.getElementById('priceChart').getContext('2d');
     priceChart = new Chart(ctx, {
@@ -139,7 +130,6 @@ function initChart() {
             responsive: true,
             plugins: {
                 legend: {
-                    position: 'top',
                     labels: {
                         color: '#ecf0f1'
                     }
@@ -147,20 +137,12 @@ function initChart() {
             },
             scales: {
                 x: {
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.1)'
-                    },
-                    ticks: {
-                        color: '#ecf0f1'
-                    }
+                    grid: { color: 'rgba(255,255,255,0.1)' },
+                    ticks: { color: '#ecf0f1' }
                 },
                 y: {
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.1)'
-                    },
-                    ticks: {
-                        color: '#ecf0f1'
-                    },
+                    grid: { color: 'rgba(255,255,255,0.1)' },
+                    ticks: { color: '#ecf0f1' },
                     beginAtZero: false
                 }
             }
@@ -168,7 +150,6 @@ function initChart() {
     });
 }
 
-// Atualizar gráfico
 function updateChart(newPrice) {
     const now = new Date();
     const time = now.toLocaleTimeString('pt-BR');
@@ -176,7 +157,6 @@ function updateChart(newPrice) {
     priceChart.data.labels.push(time);
     priceChart.data.datasets[0].data.push(Number(web3.utils.fromWei(newPrice)));
     
-    // Manter apenas os últimos 20 pontos
     if (priceChart.data.labels.length > 20) {
         priceChart.data.labels.shift();
         priceChart.data.datasets[0].data.shift();
