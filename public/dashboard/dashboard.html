@@ -107,17 +107,20 @@
             </div>
         </div>
         
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card h-100">
-                    <div class="card-header">Informações do Contrato</div>
-                    <div class="card-body">
-                        <p><strong>Endereço:</strong> <span id="contract-address">0xAa494176e662a52648CF127d6A720bDE89929420</span></p>
-                        <p><strong>Total Supply:</strong> <span id="total-supply">--</span></p>
-                        <p><strong>Circulating Supply:</strong> <span id="circulating-supply">--</span></p>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-6">
+    <div class="card h-100">
+        <div class="card-header">Informações do Contrato</div>
+        <div class="card-body">
+            <p><strong>Endereço:</strong> 
+                <span id="partial-address">0xAa49...9420</span>
+                <span id="full-address" style="display:none;">0xAa494176e662a52648CF127d6A720bDE89929420</span>
+                <button class="btn btn-sm btn-outline-secondary ms-2" onclick="toggleAddress()">Mostrar completo</button>
+            </p>
+            <p><strong>Total Supply:</strong> <span id="total-supply">--</span></p>
+            <p><strong>Circulating Supply:</strong> <span id="circulating-supply">--</span></p>
+        </div>
+    </div>
+</div>
             
             <div class="col-md-6">
                 <div class="card h-100">
