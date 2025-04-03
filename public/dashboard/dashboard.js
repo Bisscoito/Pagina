@@ -226,3 +226,20 @@ function getCurrentTime() {
         second: '2-digit'
     });
 }
+
+// Alternar visibilidade do endereço do contrato
+function toggleAddress() {
+    const partial = document.getElementById('partial-address');
+    const full = document.getElementById('full-address');
+    const btn = event.target;
+    
+    if (full.style.display === 'none') {
+        full.style.display = 'inline';
+        partial.style.display = 'none';
+        btn.textContent = 'Ocultar';
+    } else {
+        full.style.display = 'none';
+        partial.style.display = 'inline';
+        btn.textContent = 'Mostrar completo';
+    }
+}
